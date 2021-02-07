@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Crear usuario
+{% endblock titulo %}
+
+
+{% block contenido %}
+    {% include 'includes/header.html' %}
+
+    <div class="grid-container">
+        <div>
+            <h1>Registrar Empleado</h1>
+        </div>
+        <!--NO OLVIDAR JAMAS-- PARA SUBIR IMAGEN CORRECTAMENTE 
+        SE DEBE AGREGAR EL SIGUINTE CODIGOQ PERTIME SUBIR ARCHV 
+        DE ESTE TIPO CON EL HTML.... segudi del metodo POST enctype="multipart/form-data"-->
+        <form class="grid-x grid-padding-x" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <div class="cell large-6">
+                <label>Nombres
+                    {{form.first_name}}
+                </label>
+            </div>
+
+            <div class="cell large-6">
+                <label>Apellidos
+                    {{form.last_name}}
+                </label>
+            </div>
+                
+            <div class="cell large-6">
+                <label>Trabajo
+                    {{form.job}}
+                </label>
+            </div>
+                
+            <div class="cell large-6">
+                <label>Departamento
+                    {{form.departamento}}
+                </label>
+            </div>
+            
+            <div class="cell large-6">
+                <label>Habilidades
+                    {{form.habilidades}}
+                </label>
+            </div>
+
+            <div class="cell large-6">
+                <label>Avatar
+                    {{form.avatar}}
+                </label>
+            </div>
+
+            <div class="cell large-6">
+                <label>
+                    <button class="button succes"  type="submit">Registrar</button>
+                </label>
+            </div>
+        </form> 
+      
+    </div>
+
+{% endblock contenido %}
+    
+    
+
+
+

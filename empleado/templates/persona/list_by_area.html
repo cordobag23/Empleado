@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Lista empleados por departamentos
+{% endblock titulo %}
+
+
+{% block contenido %}
+    {% include 'includes/header.html' %}
+
+    <div class="grid-container">
+        <div class="cell">
+            <h2>lista empleados por area</h2>
+        </div>
+        
+        <div class="cell">
+            <table>
+                <thead>
+                  <tr>
+                    <th width="200">ID</th>
+                    <th>NOMBRES</th>
+                    <th width="150">APELLIDOS</th>
+                    <th width="150">DEPARTAMENTO</th>
+                    <th width="150">ACCION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for allempl in object_list %}
+                  <tr>
+                    
+                    <td> {{allempl.id}} </td>
+                    <td> {{allempl.first_name}} </td>
+                    <td> {{allempl.last_name}} </td>
+                    <td> {{allempl.departamento}} </td> <!--como la template debe llevar un parametro por url, en este caso
+                                                            el id de un empleado, utilizo el for q estoy usabdo para 
+                                                            llamar el id del objeto q estoy iterando -->
+                    <td> <a class="button warning" href="{% url 'persona_app:empleado_detail' allempl.id %}">ver</a> </td>
+     
+                  </tr>
+                  {% endfor %}  
+                  
+                </tbody>
+              </table>
+        
+            </div>
+           
+    </div>
+    
+{% endblock contenido %}
+    
+    
+
+
+
+    

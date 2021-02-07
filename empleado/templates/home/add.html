@@ -1,0 +1,10 @@
+<h2>aderir prueba</h2>
+<form method="POST">{% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">crear</button>
+</form>
+
+<!--comienzo a prersonalizar mi form q viene por defecto
+para ello creo un archivo forms.py en cada una de mis apps
+en este archivo, escribo la personalizacion para
+los campos del modelo -->

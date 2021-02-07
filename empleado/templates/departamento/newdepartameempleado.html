@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Departamento y empleado
+{% endblock titulo %}
+    
+
+{% block contenido %}
+  {% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <form class="grid-x align-center" method="POST">{% csrf_token %}
+        <!--accedemos a cada uno de los datos creados en en form, que se recoieron en 
+        la vista desde el froms.py-->
+    
+        
+        <div class="callout">
+            
+            <div class="cell ">
+                <label>
+                    <h4>REgistro de departamneto y persona a la vez</h4>
+                </label>
+            </div>
+            
+                <div class="callout">
+                    <div class="cell ">
+                        <label>Empleado: 
+                            <p>{{form.nombre}}</p>
+                            <p>{{form.apellidos}}</p>
+                        </label>
+                       
+                    </div>
+                </div>
+
+                <div class="callout">
+                    <div class="cell ">
+                        <label>Departamento: 
+                            <p>{{form.departamento}}</p>
+                            <p>{{form.shortname}}</p>
+                        </label>
+                        <div class="cell ">
+                            
+                    </div>
+                    </div>
+                </div>
+
+                <button class="success button" type="submit">Enviar</button>
+
+            
+        </div>
+       
+    </form>
+</div>
+    
+
+            
+{% endblock contenido %}
+    
+
+
+
+
+

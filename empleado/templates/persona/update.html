@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Actualizar empleado
+{% endblock titulo %}
+
+
+{% block contenido %}
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="cell">
+        <h1>modificr empleado</h1>
+    </div>
+
+    <div class="cell">
+        <!--aqui cargo los fields q me manda la vista para editar, updateview-->
+
+        <!--para enviar el cambio en el registro utilizo un boton, 
+        y necesito el metodo post, yapara enviarle la info actualizada -->
+        <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+            
+                <div class="cell large-6">
+                    <label>Nombres
+                        {{form.first_name}}
+                    </label>
+                </div>
+
+                <div class="cell large-6">
+                    <label>Apellidos
+                        {{form.last_name}}
+                    </label>
+                </div>
+                    
+                <div class="cell large-6">
+                    <label>Trabajo
+                        {{form.job}}
+                    </label>
+                </div>
+                    
+                <div class="cell large-6">
+                    <label>Departamento
+                        {{form.departamento}}
+                    </label>
+                </div>
+                
+                <div class="cell large-6">
+                    <label>Habilidades
+                        {{form.habilidades}}
+                    </label>
+                </div>
+
+                <div class="cell large-6">
+                    <label>avatar
+                        {{form.avatar}}
+                    </label>
+                </div>
+
+                <div class="cell large-6">
+                    <label>
+                        <button class="button succes"  type="submit">Actualizar</button>
+                    </label>
+                </div>
+
+                    
+                
+
+            
+        </form>
+    </div>
+
+</div>
+
+
+
+    
+{% endblock contenido %}
+    
+
+
+
+
+
+
+
+

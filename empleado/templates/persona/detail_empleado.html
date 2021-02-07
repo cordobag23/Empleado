@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+ <!-- como es un listview, con el nombre del objeto me trae todos los deatlles
+    para el titulo de la pestaña deñ navegador utilizamos el nombre de esa persona
+q como parametro recibe el id, entnces traera el nombre de lñ apersona q vemos el detalle -->
+{% block titulo %}
+   
+{{object.first_name}}
+{% endblock titulo %}
+
+
+{% block contenido %}
+    {% include 'includes/header.html' %}
+
+    <div class="grid-container">
+        
+        <!--NO OLVIDAR JAMAS-- PARA SUBIR IMAGEN CORRECTAMENTE 
+        SE DEBE AGREGAR EL SIGUINTE CODIGOQ PERTIME SUBIR ARCHV 
+        DE ESTE TIPO CON EL HTML.... segudi del metodo POST enctype="multipart/form-data"-->
+        <div class="grid-x grid-margin-x align-center"> 
+
+            
+            <div class="cell card large-4 " style="width: 300px; margin-top: 10px;">
+
+                <div class="card">
+                    <h4>Detalles de empleado</h4>
+                  </div>
+
+                <div class="card-divider">
+                  {{object.get_job_display}}
+                </div>
+                
+                {% if object.avatar %}
+                    <img src="{{object.avatar.url}}">
+                {% else %}   
+                    <img src="{% static 'img/avatar.png' %}">
+                {% endif %}
+                    
+                
+                <div class="card-section">
+                  <h4>{{empleado.first_name}}</h4>
+                  <p>{{empleado.last_name}}</p>
+                  <p>{{empleado.departamento}}</p>
+                  <p><span class="label">Habilidades: </span></p>
+                  <ul class="vertical menu">
+
+                    
+                    {% for habilidad in object.habilidades.all %}
+                    <li>{{habilidad}}</li>
+                    {% endfor %}
+                        
+                      
+                  </ul>
+                 
+                </div>
+              </div>
+
+        </div> 
+      
+    </div>
+
+    
+
+{% endblock contenido %}
+
+
+
+
+
+
+
+
+
+<div class="cell large-6">
+    <label>Nombres: 
+        {{empleado.first_name}}
+    </label>
+</div>
+    
+<div class="cell large-6">
+    <label>Apellidos: 
+        {{empleado.last_name}}
+    </label>
+</div>
+    
+<div class="cell large-6">
+    <label>job: 
+        {{empleado.job}}
+    </label>
+</div>
+
+<div class="cell large-6">
+    <label>departamento: 
+        {{empleado.departamento}}
+    </label>
+</div>
+
+<div class="cell large-6">
+    <label>Abilidades: 
+        {{empleado.habilidades}}
+    </label>
+</div>
+
+
+<!--pinto lo q me trae la vista detail view, normal mente se utiliza:
+el nombre del modelo en minuscula o la palabra reservada object 
+si quiero un campoo especifico del modelo, lo llamo con el punto-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

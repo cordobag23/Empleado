@@ -1,0 +1,21 @@
+<div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">Empleados</li>
+        <!--utilizo el tag url, lo cxreo y alli dentro ubicaciond e todo el paquet de urls y el nombre especifico de
+        la url name='nombre especificos'-->
+        <li><a href="{% url 'persona_app:empleados_all' %}">Listar</a></li>
+        <li><a href="{% url 'departamento_app:listdepa' %}">Departamentos</a></li>
+        <li><a href="{% url 'persona_app:list_admin' %}">Administrar</a></li>
+        <li><a href="{% url 'departamento_app:depaempleado'  %}">Nuevo Departamento</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Buscar empleado"></li>
+        <li><a href="{% url 'persona_app:add' %}"><button type="button" class="button">Registrar nuevo</button></a></li>
+      </ul>
+    </div>
+  </div>
+
+  

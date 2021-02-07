@@ -1,0 +1,18 @@
+<h1>empleados por palabra clave</h1>
+<!--creo la caja de texto q va a buscar por palabra clave en un form-->
+<!--SIEMPRE COLOCAR EL TOKEN-->
+<form method="GET">{% csrf_token %}
+    <!-- el id y nombre igual para identificarlo en la vista-->
+    <input type="text" id="kword" name="kword" placeholder="ingrese nombre aqui">
+    <!--para activar el metodo get en el navegador a traves de este html es obligatorio q lleve un boton submit-->
+    <button type="submit">Buscar</button>
+</form>
+
+<!--pinto la lista q habiamos filtrado por NOMBRE a traves de la caja de texto-->
+<h4>Lista de empleados por nombre</h4>
+{% for li in empleados %}
+    <ul>
+        <li>{{li}}</li>
+    </ul>
+{% endfor %}
+    

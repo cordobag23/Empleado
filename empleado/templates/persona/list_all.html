@@ -1,0 +1,116 @@
+<!--me traigo lo d base.html-->
+{% extends 'base.html' %}
+<!--cargo archivos estaticos-->
+{% load static %}
+<!--bloq titulo-->
+{% block titulo %} Lista de empleados {% endblock titulo %}
+    
+<!--bloq contenido-->
+{% block contenido %}
+<!--llamo al header, menu-->
+{% include 'includes/header.html' %}
+
+<!--INICIO DIV GENERAL CON grid container-->
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell"><h4>Lista de empleados</h4></div>
+
+    <form method="GET">{% csrf_token %}
+        <div class="grid-x grid-margin-x">
+            <div class="cell large-7"><input type="text" id="kword" name="kword" placeholder="buscar empleado"></div>
+            <div class="cell large-2">
+                
+                    <button type="submit" class="success button" >Buscar</button>
+                
+                
+            </div>
+        </div>
+    </form>
+        <div class="cell">
+            <table>
+                <thead>
+                  <tr>
+                    <th width="200">ID</th>
+                    <th>NOMBRES</th>
+                    <th width="150">APELLIDOS</th>
+                    <th width="150">DEPARTAMENTO</th>
+                    <th width="150">ACCION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for allempl in object_list %}
+                  <tr>
+                    
+                    <td> {{allempl.id}} </td>
+                    <td> {{allempl.first_name}} </td>
+                    <td> {{allempl.last_name}} </td>
+                    <td> {{allempl.departamento}} </td> <!--como la template debe llevar un parametro por url, en este caso
+                                                            el id de un empleado, utilizo el for q estoy usabdo para 
+                                                            llamar el id del objeto q estoy iterando -->
+                    <td> <a class="button warning" href="{% url 'persona_app:empleado_detail' allempl.id %}">ver</a> </td>
+     
+                  </tr>
+                  {% endfor %}  
+                  
+                </tbody>
+              </table>
+        
+            </div>
+
+        <!--e otro hijo cell del grid-x principal coloclo la paginacion de foundation-->
+        <div class="cell">
+            <!--confirmo que paginate_by este como parametro de una vista x-->
+            {% if is_paginated %}
+
+            <nav aria-label="Pagination">
+                <ul class="pagination">
+
+                    <!--cuándo quiero q aparezca este Previus??
+                    si el objeto creado de paginacion .tiene paginas atras-->
+                    {% if page_obj.has_previous %}
+                    <a href="?page={{paginas}}" aria-label="Page 2">{{paginas}}</a>
+
+                    <!--                                  el page_obj ya trae la pagina anterior-->
+                    <li class="pagination-previous"> <a href="?page={{page_obj.previous_page_number}}" aria-label="Page 2">Atras </a></li>    
+                    {% endif %}
+                <!--saber cuantas paginas tengo en total
+                itero con unu for el paginator que m,e va a atraer las paginas paginator.page_range -->
+                
+                {% for paginas in paginator.page_range %}
+
+                <!-- ciomparamos dos iibjetos para saber si pinto o no la pagina
+                si paginas q es el q tare el numeor de la pagina es igual a la pagina actual page_obj.number
+                 -->
+                
+                {% ifequal paginas page_obj.number %} 
+                    <li class="current"><span class="show-for-sr">You're on page</span>{{paginas}}</li>
+                {% else %}
+                    <!--le indico la pagina a acceder {{paginas}}        aca muestro la iteracion del numeroi d paginas-->
+                    <li><a href="?page={{paginas}}" aria-label="Page 2">{{paginas}}</a></li>  
+                {% endifequal %}
+                    
+
+                
+                {% endfor %}
+                    
+                <!--alido si la pagina siguiente o anterio dependiendo, exista-->
+                {% if page_obj.has_next %}
+                  <li class="pagination-next"><a href="?page={{page_obj.next_page_number}}" aria-label="Page 2">Siguiente </a></li>
+                {% endif %}  
+                </ul>
+              </nav>
+                
+            {% endif %}
+                
+        </div>
+        <!--fin de  la paginacion de foundation-->
+            
+    </div>
+
+</div>
+<!--FIN DIV GENERAL CON grid container-->
+
+{% endblock contenido %}
+    
+
+    
