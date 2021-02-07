@@ -1,0 +1,20 @@
+
+7.1 buscamos el origen de mi repositorio: git remote -v
+7.2 si es la primera vez q subimos a github: git push origin HEAD:master
+    *registro mi correo y usuario:
+    *  git config --global user.email "cordobag23@gmail.com"
+    *  git config --global user.name "cordobag23" 
+
+******************************************************************************
+ABRO TERMINAL GIT BASH HERE
+0.busco la carpeta doonde clonar el archivo, copio la url del repositorio creado
+1. Escribe git clone, y luego pega la URL que copiaste antes.... git clone https://github.com/cordobag23/empleado.git
+2. voy a la carpeta q se creó:   git init
+3. edito lo q quiera
+4. indico q ya realice cambios   git add .
+5. git commit -m "mi primer comentearioio"
+6. subo el project:   git push -u origin 
+
+---------BAJAR CAMBIOS DESDE GITHUB-------------
+1. para bajar todo lo nuevo q este en el repositorio utilizo el git pull nombredelrepositorio(origin)
+2. si sale la pantalla branch rara, damos esc/:wq
